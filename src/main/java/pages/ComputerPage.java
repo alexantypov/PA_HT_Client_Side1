@@ -10,14 +10,11 @@ public class ComputerPage extends HomePage{
         super(driver);
     }
 
-    @FindBy(xpath = "//img[@alt=\'Picture for category Desktops\']")
+    @FindBy(xpath = "//h2[@class='title']/a")
     private WebElement DesktopBanner;
 
     public ComputerPage openComputerPage() {
         wait.until(ExpectedConditions.elementToBeClickable(DesktopBanner));
-        waitUntilPageIsFullyLoaded(wait);
-        perfNavigationTiming.writeToInflux("ComputerPage");
-        log.info("Computer page is loaded");
         DesktopBanner.click();
         return this;
     }
